@@ -1,0 +1,5 @@
+spring:
+  application:
+    name: devops-console
+  profiles:
+    active: dev
