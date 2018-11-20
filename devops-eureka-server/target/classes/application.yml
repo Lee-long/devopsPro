@@ -1,24 +1,15 @@
 server:
-  port: 8761
-  
-security:
-  basic:
-    enabled: true
-  user:
-    name: devops
-    password: devops#2019
-    
+  port : 8761
 eureka:
-  environment: devops
   instance:
-    hostname: localhost
+    hostname : localhost
   server:
-    renewal-percent-threshold: 0.85
-    enable-self-preservation: false # 自我保护 如果不关闭，关掉的节点无法及时更新
-    eviction-interval-timer-in-ms: 10000 # 清理列表间隔时间 清理间隔（单位毫秒，默认是60*1000）
-    response-cache-update-interval-ms: 4000
+      renewal-percent-threshold: 0.85
+      enable-self-preservation: false # 自我保护 如果不关闭，关掉的节点无法及时更新
+      eviction-interval-timer-in-ms: 10000 # 清理列表间隔时间 清理间隔（单位毫秒，默认是60*1000）
+      response-cache-update-interval-ms: 4000
   client:
-    register-with-eureka: false
-    fetch-registry: false
-    service-url:
-      defaultZone: http://${eureka.instance.hostname}:${server.port}/devops_eureka_server
+    registerWithEureka : false
+    fetchRegistry : false
+    serviceUrl:
+      defaultZone : http://${eureka.instance.hostname}:${server.port}/eureka/
