@@ -1,6 +1,6 @@
 package com.cherry.devops.devopsconsole.utils;
 
-import com.cherry.devops.devopsconsole.bean.Result;
+import com.cherry.devops.devopsconsole.entity.Result;
 
 /**
  * @ClassName ResultUtils

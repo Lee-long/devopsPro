@@ -3,3 +3,6 @@ spring:
     name: devops-console
   profiles:
     active: dev
+mybatis:
+  typeAliasesPackage: com.cherry.devops.devopsconsole.entity
+  mapperLocations: classpath:mapper/*.xml
