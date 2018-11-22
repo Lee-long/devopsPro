@@ -1,0 +1,1009 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cherry.devops.devopsconsole.mapper.dao.UserMapper">
+  <resultMap id="BaseResultMap" type="com.cherry.devops.devopsconsole.entity.User">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="gender" jdbcType="SMALLINT" property="gender" />
+    <result column="age" jdbcType="SMALLINT" property="age" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="job_no" jdbcType="VARCHAR" property="jobNo" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="position_date" jdbcType="TIMESTAMP" property="positionDate" />
+    <result column="safety_position_id" jdbcType="INTEGER" property="safetyPositionId" />
+    <result column="safety_position_date" jdbcType="TIMESTAMP" property="safetyPositionDate" />
+    <result column="education" jdbcType="SMALLINT" property="education" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="credit" jdbcType="INTEGER" property="credit" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="checkout_count" jdbcType="SMALLINT" property="checkoutCount" />
+    <result column="last_checkout_time" jdbcType="TIMESTAMP" property="lastCheckoutTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="login_count" jdbcType="SMALLINT" property="loginCount" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus" />
+    <result column="login_token" jdbcType="VARCHAR" property="loginToken" />
+    <result column="login_token_refresh_time" jdbcType="TIMESTAMP" property="loginTokenRefreshTime" />
+    <result column="onboard_date" jdbcType="DATE" property="onboardDate" />
+    <result column="trace_code_i" jdbcType="VARCHAR" property="traceCodeI" />
+    <result column="trace_code_u" jdbcType="VARCHAR" property="traceCodeU" />
+    <result column="host_name" jdbcType="VARCHAR" property="hostName" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user (id, org_id, login_name, 
+      password, mobile, telephone, 
+      email, nick_name, full_name, 
+      gender, age, birthday, 
+      avatar, job_no, card_id, 
+      position_id, position_date, safety_position_id, 
+      safety_position_date, education, major, 
+      role_id, credit, balance, 
+      checkout_count, last_checkout_time, last_login_time, 
+      login_count, last_login_ip, delete_status, 
+      login_token, login_token_refresh_time, onboard_date, 
+      trace_code_i, trace_code_u, host_name, 
+      create_user_id, create_by, create_date, 
+      update_user_id, update_by, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=SMALLINT}, #{age,jdbcType=SMALLINT}, #{birthday,jdbcType=DATE}, 
+      #{avatar,jdbcType=VARCHAR}, #{jobNo,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{positionId,jdbcType=INTEGER}, #{positionDate,jdbcType=TIMESTAMP}, #{safetyPositionId,jdbcType=INTEGER}, 
+      #{safetyPositionDate,jdbcType=TIMESTAMP}, #{education,jdbcType=SMALLINT}, #{major,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, 
+      #{checkoutCount,jdbcType=SMALLINT}, #{lastCheckoutTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginCount,jdbcType=SMALLINT}, #{lastLoginIp,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=SMALLINT}, 
+      #{loginToken,jdbcType=VARCHAR}, #{loginTokenRefreshTime,jdbcType=TIMESTAMP}, #{onboardDate,jdbcType=DATE}, 
+      #{traceCodeI,jdbcType=VARCHAR}, #{traceCodeU,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="jobNo != null">
+        job_no,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="positionDate != null">
+        position_date,
+      </if>
+      <if test="safetyPositionId != null">
+        safety_position_id,
+      </if>
+      <if test="safetyPositionDate != null">
+        safety_position_date,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="checkoutCount != null">
+        checkout_count,
+      </if>
+      <if test="lastCheckoutTime != null">
+        last_checkout_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginCount != null">
+        login_count,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="loginToken != null">
+        login_token,
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        login_token_refresh_time,
+      </if>
+      <if test="onboardDate != null">
+        onboard_date,
+      </if>
+      <if test="traceCodeI != null">
+        trace_code_i,
+      </if>
+      <if test="traceCodeU != null">
+        trace_code_u,
+      </if>
+      <if test="hostName != null">
+        host_name,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNo != null">
+        #{jobNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionDate != null">
+        #{positionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safetyPositionId != null">
+        #{safetyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="safetyPositionDate != null">
+        #{safetyPositionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=SMALLINT},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="checkoutCount != null">
+        #{checkoutCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastCheckoutTime != null">
+        #{lastCheckoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="loginToken != null">
+        #{loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        #{loginTokenRefreshTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onboardDate != null">
+        #{onboardDate,jdbcType=DATE},
+      </if>
+      <if test="traceCodeI != null">
+        #{traceCodeI,jdbcType=VARCHAR},
+      </if>
+      <if test="traceCodeU != null">
+        #{traceCodeU,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.cherry.devops.devopsconsole.entity.User">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="gender" jdbcType="SMALLINT" property="gender" />
+    <result column="age" jdbcType="SMALLINT" property="age" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="job_no" jdbcType="VARCHAR" property="jobNo" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="position_date" jdbcType="TIMESTAMP" property="positionDate" />
+    <result column="safety_position_id" jdbcType="INTEGER" property="safetyPositionId" />
+    <result column="safety_position_date" jdbcType="TIMESTAMP" property="safetyPositionDate" />
+    <result column="education" jdbcType="SMALLINT" property="education" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="credit" jdbcType="INTEGER" property="credit" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="checkout_count" jdbcType="SMALLINT" property="checkoutCount" />
+    <result column="last_checkout_time" jdbcType="TIMESTAMP" property="lastCheckoutTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="login_count" jdbcType="SMALLINT" property="loginCount" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus" />
+    <result column="login_token" jdbcType="VARCHAR" property="loginToken" />
+    <result column="login_token_refresh_time" jdbcType="TIMESTAMP" property="loginTokenRefreshTime" />
+    <result column="onboard_date" jdbcType="DATE" property="onboardDate" />
+    <result column="trace_code_i" jdbcType="VARCHAR" property="traceCodeI" />
+    <result column="trace_code_u" jdbcType="VARCHAR" property="traceCodeU" />
+    <result column="host_name" jdbcType="VARCHAR" property="hostName" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user (id, org_id, login_name, 
+      password, mobile, telephone, 
+      email, nick_name, full_name, 
+      gender, age, birthday, 
+      avatar, job_no, card_id, 
+      position_id, position_date, safety_position_id, 
+      safety_position_date, education, major, 
+      role_id, credit, balance, 
+      checkout_count, last_checkout_time, last_login_time, 
+      login_count, last_login_ip, delete_status, 
+      login_token, login_token_refresh_time, onboard_date, 
+      trace_code_i, trace_code_u, host_name, 
+      create_user_id, create_by, create_date, 
+      update_user_id, update_by, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=SMALLINT}, #{age,jdbcType=SMALLINT}, #{birthday,jdbcType=DATE}, 
+      #{avatar,jdbcType=VARCHAR}, #{jobNo,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{positionId,jdbcType=INTEGER}, #{positionDate,jdbcType=TIMESTAMP}, #{safetyPositionId,jdbcType=INTEGER}, 
+      #{safetyPositionDate,jdbcType=TIMESTAMP}, #{education,jdbcType=SMALLINT}, #{major,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, 
+      #{checkoutCount,jdbcType=SMALLINT}, #{lastCheckoutTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginCount,jdbcType=SMALLINT}, #{lastLoginIp,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=SMALLINT}, 
+      #{loginToken,jdbcType=VARCHAR}, #{loginTokenRefreshTime,jdbcType=TIMESTAMP}, #{onboardDate,jdbcType=DATE}, 
+      #{traceCodeI,jdbcType=VARCHAR}, #{traceCodeU,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="jobNo != null">
+        job_no,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="positionDate != null">
+        position_date,
+      </if>
+      <if test="safetyPositionId != null">
+        safety_position_id,
+      </if>
+      <if test="safetyPositionDate != null">
+        safety_position_date,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="checkoutCount != null">
+        checkout_count,
+      </if>
+      <if test="lastCheckoutTime != null">
+        last_checkout_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginCount != null">
+        login_count,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="loginToken != null">
+        login_token,
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        login_token_refresh_time,
+      </if>
+      <if test="onboardDate != null">
+        onboard_date,
+      </if>
+      <if test="traceCodeI != null">
+        trace_code_i,
+      </if>
+      <if test="traceCodeU != null">
+        trace_code_u,
+      </if>
+      <if test="hostName != null">
+        host_name,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNo != null">
+        #{jobNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionDate != null">
+        #{positionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safetyPositionId != null">
+        #{safetyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="safetyPositionDate != null">
+        #{safetyPositionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=SMALLINT},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="checkoutCount != null">
+        #{checkoutCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastCheckoutTime != null">
+        #{lastCheckoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="loginToken != null">
+        #{loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        #{loginTokenRefreshTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onboardDate != null">
+        #{onboardDate,jdbcType=DATE},
+      </if>
+      <if test="traceCodeI != null">
+        #{traceCodeI,jdbcType=VARCHAR},
+      </if>
+      <if test="traceCodeU != null">
+        #{traceCodeU,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <resultMap id="BaseResultMap" type="com.cherry.devops.devopsconsole.entity.User">
+    <result column="id" jdbcType="INTEGER" property="id" />
+    <result column="org_id" jdbcType="INTEGER" property="orgId" />
+    <result column="login_name" jdbcType="VARCHAR" property="loginName" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="mobile" jdbcType="VARCHAR" property="mobile" />
+    <result column="telephone" jdbcType="VARCHAR" property="telephone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+    <result column="full_name" jdbcType="VARCHAR" property="fullName" />
+    <result column="gender" jdbcType="SMALLINT" property="gender" />
+    <result column="age" jdbcType="SMALLINT" property="age" />
+    <result column="birthday" jdbcType="DATE" property="birthday" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="job_no" jdbcType="VARCHAR" property="jobNo" />
+    <result column="card_id" jdbcType="VARCHAR" property="cardId" />
+    <result column="position_id" jdbcType="INTEGER" property="positionId" />
+    <result column="position_date" jdbcType="TIMESTAMP" property="positionDate" />
+    <result column="safety_position_id" jdbcType="INTEGER" property="safetyPositionId" />
+    <result column="safety_position_date" jdbcType="TIMESTAMP" property="safetyPositionDate" />
+    <result column="education" jdbcType="SMALLINT" property="education" />
+    <result column="major" jdbcType="VARCHAR" property="major" />
+    <result column="role_id" jdbcType="INTEGER" property="roleId" />
+    <result column="credit" jdbcType="INTEGER" property="credit" />
+    <result column="balance" jdbcType="DECIMAL" property="balance" />
+    <result column="checkout_count" jdbcType="SMALLINT" property="checkoutCount" />
+    <result column="last_checkout_time" jdbcType="TIMESTAMP" property="lastCheckoutTime" />
+    <result column="last_login_time" jdbcType="TIMESTAMP" property="lastLoginTime" />
+    <result column="login_count" jdbcType="SMALLINT" property="loginCount" />
+    <result column="last_login_ip" jdbcType="VARCHAR" property="lastLoginIp" />
+    <result column="delete_status" jdbcType="SMALLINT" property="deleteStatus" />
+    <result column="login_token" jdbcType="VARCHAR" property="loginToken" />
+    <result column="login_token_refresh_time" jdbcType="TIMESTAMP" property="loginTokenRefreshTime" />
+    <result column="onboard_date" jdbcType="DATE" property="onboardDate" />
+    <result column="trace_code_i" jdbcType="VARCHAR" property="traceCodeI" />
+    <result column="trace_code_u" jdbcType="VARCHAR" property="traceCodeU" />
+    <result column="host_name" jdbcType="VARCHAR" property="hostName" />
+    <result column="create_user_id" jdbcType="INTEGER" property="createUserId" />
+    <result column="create_by" jdbcType="VARCHAR" property="createBy" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_user_id" jdbcType="INTEGER" property="updateUserId" />
+    <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
+  </resultMap>
+  <insert id="insert" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user (id, org_id, login_name, 
+      password, mobile, telephone, 
+      email, nick_name, full_name, 
+      gender, age, birthday, 
+      avatar, job_no, card_id, 
+      position_id, position_date, safety_position_id, 
+      safety_position_date, education, major, 
+      role_id, credit, balance, 
+      checkout_count, last_checkout_time, last_login_time, 
+      login_count, last_login_ip, delete_status, 
+      login_token, login_token_refresh_time, onboard_date, 
+      trace_code_i, trace_code_u, host_name, 
+      create_user_id, create_by, create_date, 
+      update_user_id, update_by, update_date
+      )
+    values (#{id,jdbcType=INTEGER}, #{orgId,jdbcType=INTEGER}, #{loginName,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{telephone,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{fullName,jdbcType=VARCHAR}, 
+      #{gender,jdbcType=SMALLINT}, #{age,jdbcType=SMALLINT}, #{birthday,jdbcType=DATE}, 
+      #{avatar,jdbcType=VARCHAR}, #{jobNo,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, 
+      #{positionId,jdbcType=INTEGER}, #{positionDate,jdbcType=TIMESTAMP}, #{safetyPositionId,jdbcType=INTEGER}, 
+      #{safetyPositionDate,jdbcType=TIMESTAMP}, #{education,jdbcType=SMALLINT}, #{major,jdbcType=VARCHAR}, 
+      #{roleId,jdbcType=INTEGER}, #{credit,jdbcType=INTEGER}, #{balance,jdbcType=DECIMAL}, 
+      #{checkoutCount,jdbcType=SMALLINT}, #{lastCheckoutTime,jdbcType=TIMESTAMP}, #{lastLoginTime,jdbcType=TIMESTAMP}, 
+      #{loginCount,jdbcType=SMALLINT}, #{lastLoginIp,jdbcType=VARCHAR}, #{deleteStatus,jdbcType=SMALLINT}, 
+      #{loginToken,jdbcType=VARCHAR}, #{loginTokenRefreshTime,jdbcType=TIMESTAMP}, #{onboardDate,jdbcType=DATE}, 
+      #{traceCodeI,jdbcType=VARCHAR}, #{traceCodeU,jdbcType=VARCHAR}, #{hostName,jdbcType=VARCHAR}, 
+      #{createUserId,jdbcType=INTEGER}, #{createBy,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, 
+      #{updateUserId,jdbcType=INTEGER}, #{updateBy,jdbcType=VARCHAR}, #{updateDate,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cherry.devops.devopsconsole.entity.User">
+    insert into t_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="orgId != null">
+        org_id,
+      </if>
+      <if test="loginName != null">
+        login_name,
+      </if>
+      <if test="password != null">
+        password,
+      </if>
+      <if test="mobile != null">
+        mobile,
+      </if>
+      <if test="telephone != null">
+        telephone,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="nickName != null">
+        nick_name,
+      </if>
+      <if test="fullName != null">
+        full_name,
+      </if>
+      <if test="gender != null">
+        gender,
+      </if>
+      <if test="age != null">
+        age,
+      </if>
+      <if test="birthday != null">
+        birthday,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="jobNo != null">
+        job_no,
+      </if>
+      <if test="cardId != null">
+        card_id,
+      </if>
+      <if test="positionId != null">
+        position_id,
+      </if>
+      <if test="positionDate != null">
+        position_date,
+      </if>
+      <if test="safetyPositionId != null">
+        safety_position_id,
+      </if>
+      <if test="safetyPositionDate != null">
+        safety_position_date,
+      </if>
+      <if test="education != null">
+        education,
+      </if>
+      <if test="major != null">
+        major,
+      </if>
+      <if test="roleId != null">
+        role_id,
+      </if>
+      <if test="credit != null">
+        credit,
+      </if>
+      <if test="balance != null">
+        balance,
+      </if>
+      <if test="checkoutCount != null">
+        checkout_count,
+      </if>
+      <if test="lastCheckoutTime != null">
+        last_checkout_time,
+      </if>
+      <if test="lastLoginTime != null">
+        last_login_time,
+      </if>
+      <if test="loginCount != null">
+        login_count,
+      </if>
+      <if test="lastLoginIp != null">
+        last_login_ip,
+      </if>
+      <if test="deleteStatus != null">
+        delete_status,
+      </if>
+      <if test="loginToken != null">
+        login_token,
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        login_token_refresh_time,
+      </if>
+      <if test="onboardDate != null">
+        onboard_date,
+      </if>
+      <if test="traceCodeI != null">
+        trace_code_i,
+      </if>
+      <if test="traceCodeU != null">
+        trace_code_u,
+      </if>
+      <if test="hostName != null">
+        host_name,
+      </if>
+      <if test="createUserId != null">
+        create_user_id,
+      </if>
+      <if test="createBy != null">
+        create_by,
+      </if>
+      <if test="createDate != null">
+        create_date,
+      </if>
+      <if test="updateUserId != null">
+        update_user_id,
+      </if>
+      <if test="updateBy != null">
+        update_by,
+      </if>
+      <if test="updateDate != null">
+        update_date,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="orgId != null">
+        #{orgId,jdbcType=INTEGER},
+      </if>
+      <if test="loginName != null">
+        #{loginName,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="mobile != null">
+        #{mobile,jdbcType=VARCHAR},
+      </if>
+      <if test="telephone != null">
+        #{telephone,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="nickName != null">
+        #{nickName,jdbcType=VARCHAR},
+      </if>
+      <if test="fullName != null">
+        #{fullName,jdbcType=VARCHAR},
+      </if>
+      <if test="gender != null">
+        #{gender,jdbcType=SMALLINT},
+      </if>
+      <if test="age != null">
+        #{age,jdbcType=SMALLINT},
+      </if>
+      <if test="birthday != null">
+        #{birthday,jdbcType=DATE},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="jobNo != null">
+        #{jobNo,jdbcType=VARCHAR},
+      </if>
+      <if test="cardId != null">
+        #{cardId,jdbcType=VARCHAR},
+      </if>
+      <if test="positionId != null">
+        #{positionId,jdbcType=INTEGER},
+      </if>
+      <if test="positionDate != null">
+        #{positionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="safetyPositionId != null">
+        #{safetyPositionId,jdbcType=INTEGER},
+      </if>
+      <if test="safetyPositionDate != null">
+        #{safetyPositionDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="education != null">
+        #{education,jdbcType=SMALLINT},
+      </if>
+      <if test="major != null">
+        #{major,jdbcType=VARCHAR},
+      </if>
+      <if test="roleId != null">
+        #{roleId,jdbcType=INTEGER},
+      </if>
+      <if test="credit != null">
+        #{credit,jdbcType=INTEGER},
+      </if>
+      <if test="balance != null">
+        #{balance,jdbcType=DECIMAL},
+      </if>
+      <if test="checkoutCount != null">
+        #{checkoutCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastCheckoutTime != null">
+        #{lastCheckoutTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="lastLoginTime != null">
+        #{lastLoginTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="loginCount != null">
+        #{loginCount,jdbcType=SMALLINT},
+      </if>
+      <if test="lastLoginIp != null">
+        #{lastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="deleteStatus != null">
+        #{deleteStatus,jdbcType=SMALLINT},
+      </if>
+      <if test="loginToken != null">
+        #{loginToken,jdbcType=VARCHAR},
+      </if>
+      <if test="loginTokenRefreshTime != null">
+        #{loginTokenRefreshTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="onboardDate != null">
+        #{onboardDate,jdbcType=DATE},
+      </if>
+      <if test="traceCodeI != null">
+        #{traceCodeI,jdbcType=VARCHAR},
+      </if>
+      <if test="traceCodeU != null">
+        #{traceCodeU,jdbcType=VARCHAR},
+      </if>
+      <if test="hostName != null">
+        #{hostName,jdbcType=VARCHAR},
+      </if>
+      <if test="createUserId != null">
+        #{createUserId,jdbcType=INTEGER},
+      </if>
+      <if test="createBy != null">
+        #{createBy,jdbcType=VARCHAR},
+      </if>
+      <if test="createDate != null">
+        #{createDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updateUserId != null">
+        #{updateUserId,jdbcType=INTEGER},
+      </if>
+      <if test="updateBy != null">
+        #{updateBy,jdbcType=VARCHAR},
+      </if>
+      <if test="updateDate != null">
+        #{updateDate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+</mapper>

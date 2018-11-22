@@ -3,6 +3,19 @@ spring:
     name: devops-console
   profiles:
     active: dev
+  devtools: #设置热部署
+    restart:
+      enabled: true #开启热部署
+      additional-paths: src/main/java    #重启范围
 mybatis:
   typeAliasesPackage: com.cherry.devops.devopsconsole.entity
   mapperLocations: classpath:mapper/*.xml
+  configuration:
+    map-underscore-to-camel-case: true #开启驼峰映射
+
+#配置分页插件
+#pagehelper分页插件
+#　　pagehelper.helper-dialect=mysql
+#　　pagehelper.reasonable=true
+#　　pagehelper.support-methods-arguments=true
+#　　pagehelper.params=count=countSql
