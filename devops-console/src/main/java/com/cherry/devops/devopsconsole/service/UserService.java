@@ -1,5 +1,7 @@
 package com.cherry.devops.devopsconsole.service;
 
+import com.cherry.devops.devopsconsole.entity.ResponseEntity;
+
 /**
  * @ClassName UserService
  * @Description TODO
@@ -12,12 +14,12 @@ public interface UserService {
     /**
      * @return java.lang.String
      * @MethodName userLogin
-     * @Param [userName, passWord, verCode]
+     * @Param [userName, passWord, verCode,remoteIp]
      * @Author lixiaolong
      * @Date 2018/11/21 17:39
      * @version 1.0
      */
-    public abstract String userLogin(String userName, String passWord, String verCode);
+    public abstract ResponseEntity userLogin(String userName, String passWord, String verCode, String remoteIp) throws Exception;
 
     /**
      * @return java.lang.String
@@ -28,9 +30,9 @@ public interface UserService {
      * @Date 2018/11/21 17:39
      * @version 1.0
      */
-    public abstract String userLogout(String userId);
+    public abstract ResponseEntity userLogout(String userId) throws Exception;
 
-    public abstract String userUpdatePassWord(String userId, String newPassWord);
+    public abstract ResponseEntity userUpdatePassWord(String userId, String newPassWord) throws Exception;
 
-    public abstract String userUpdate(String userId);
+    public abstract ResponseEntity userUpdate(String userId) throws Exception;
 }

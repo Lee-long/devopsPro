@@ -1,14 +1,14 @@
 package com.cherry.devops.devopsconsole.entity;
 
 /**
- * @ClassName Result
+ * @ClassName ResponseEntity
  * @Description 数据返回实体
  * @Author lixiaolong
  * @Date Created in 2018/11/21 14:39
  * @Version 1.0
  * @Modified by lixiaolong-2018/11/21 14:39
  */
-public class Result {
+public class ResponseEntity<T> {
 
     /**
      * 是否成功
@@ -17,15 +17,15 @@ public class Result {
     /**
      * 状态码
      */
-    private Integer code;
+    private String errorCode;
     /**
      * 返回信息
      */
-    private String message;
+    private String errorMsg;
     /**
      * 返回数据
      */
-    private Object data;
+    private T data;
 
     /**
      * @return
@@ -36,7 +36,7 @@ public class Result {
      * @Date 2018/11/21 14:45
      * @version 1.0
      */
-    public Result() {
+    public ResponseEntity() {
         super();
     }
 
@@ -49,11 +49,11 @@ public class Result {
      * @Date 2018/11/21 14:45
      * @version 1.0
      */
-    public Result(boolean isSuccess, int code, String message) {
+    public ResponseEntity(boolean isSuccess, String errorCode, String errorMsg) {
         super();
         this.isSuccess = isSuccess;
-        this.code = code;
-        this.message = message;
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
     }
 
     /**
@@ -65,11 +65,11 @@ public class Result {
      * @Date 2018/11/21 14:45
      * @version 1.0
      */
-    public Result(boolean isSuccess, int code, String message, Object data) {
+    public ResponseEntity(boolean isSuccess, String errorCode, String errorMsg, T data) {
         super();
         this.isSuccess = isSuccess;
-        this.code = code;
-        this.message = message;
+        this.errorCode = errorCode;
+        this.errorMsg = errorMsg;
         this.data = data;
     }
 
@@ -81,27 +81,27 @@ public class Result {
         isSuccess = success;
     }
 
-    public Integer getCode() {
-        return code;
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setCode(Integer code) {
-        this.code = code;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public String getMessage() {
-        return message;
+    public String getErrorMsg() {
+        return errorMsg;
     }
 
-    public void setMessage(String message) {
-        this.message = message;
+    public void setErrorMsg(String errorMsg) {
+        this.errorMsg = errorMsg;
     }
 
-    public Object getData() {
+    public T getData() {
         return data;
     }
 
-    public void setData(Object data) {
+    public void setData(T data) {
         this.data = data;
     }
 }
