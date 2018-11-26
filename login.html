@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>安全培训管理系统</title>
+    <script src="dist/js/jquery-3.3.1.min.js"></script>
+    <script src="dist/js/bootstrap.min.js"></script>
+    <script src="dist/js/bootstrapValidator.js"></script>
+
+    <link href="dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="dist/css/font-awesome.min.css" rel="stylesheet">
+    <link href="dist/css/bootstrapValidator.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        body {
+            background: url("/images/bg_one.jpg");
+        }
+
+        .form {
+            background: rgba(255, 255, 255, 0.5);
+            width: 500px;
+            margin: 150px auto;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="form row">
+        <div class="form-horizontal col-md-offset-2">
+            <div class="page-header">
+                <h2>用户登录</h2>
+            </div>
+            <form id="login_form" method="post" class="form-horizontal">
+                <div class="alert alert-danger" style="display: none;"></div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">账 号</label>
+                    <div class="col-lg-7">
+                        <input type="text" class="form-control" name="username"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">密 码</label>
+                    <div class="col-lg-7">
+                        <input type="password" class="form-control" name="password"/>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-2 control-label">验证码</label>
+                    <div class="col-lg-5">
+                        <input type="text" class="form-control" name="vercode"/>
+                    </div>
+                    <img name="token" src="" alt="验证码"
+                         style="width: 55px;height: 32px;margin-left: 2px;cursor: pointer;"/>
+                </div>
+                <!--<div class="form-group">-->
+                <!--<label class="col-lg-5 control-label">-->
+                <!--<input type="checkbox" name="remember" value="1"/>记住我-->
+                <!--</label>-->
+                <!--</div>-->
+                <div class="form-group">
+                    <div class="row">
+                        <!--<button id="reset" type="button" class="btn btn-danger pull-right" style="margin-right: 60%;"-->
+                        <!--name="reset"/>-->
+                        <!--重 置-->
+                        <button id="submit" type="submit" class="btn btn-primary pull-right" style="margin-right: 30%;"
+                                name="submit"/>
+                        登 录
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    s
+</div>
+<script>
+    $(document).ready(function () {
+        reloadToken();
+
+        $('img[name=token]').click(function () {
+            reloadToken();
+        });
+
+        $('#login_form').bootstrapValidator({
+            message: 'This value is not valid',
+            feedbackIcons: {
+                valid: 'glyphicon glyphicon-ok',
+                invalid: 'glyphicon glyphicon-remove',
+                validating: 'glyphicon glyphicon-refresh'
+            },
+            fields: {
+                username: {
+                    message: 'The username is not valid',
+                    validators: {
+                        notEmpty: {
+                            message: '账号不能为空'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9_\.]+$/,
+                            message: '账号只能由字母、数字、点和下划线组成'
+                        }
+                    }
+                },
+                password: {
+                    validators: {
+                        notEmpty: {
+                            message: '密码不能为空'
+                        }
+                    }
+                },
+                vercode: {
+                    validators: {
+                        notEmpty: {
+                            message: '验证码不能为空'
+                        },
+                        stringLength: {
+                            min: 4,
+                            max: 4,
+                            message: '验证码长度不能超过4'
+                        },
+                        regexp: {
+                            regexp: /^[a-zA-Z0-9]+$/,
+                            message: '验证码只能由字母、数字组成'
+                        }
+                    }
+                }
+            }
+        }).on('success.form.bv', function (e) {
+            e.preventDefault();
+            var $form = $(e.target);
+
+            var usernameNode = $($('input[type="text"]')[0]);
+            var username = $.trim(usernameNode.val());
+
+            var passwordNode = $('input[type="password"]');
+            var password = passwordNode.val();
+
+            var imageTokenNode = $($('input[type=text]')[1]);
+            var imageToken = imageTokenNode.val();
+
+            apiClient({
+                url: 'admin/login',
+                type: 'post',
+                data: {
+                    username: username,
+                    password: password,
+                    imageToken: imageToken
+                },
+                success: function (data) {
+                    if (data.code == 0) {
+                        // setLocalStorage('user', JSON.stringify(data.model));
+                        window.location.href = 'index.html';
+                    } else if (data.code == 7) {
+                        $form.find('.alert').html('验证码错误！').show();
+                    } else {
+                        $form.find('.alert').html(data.message).show();
+                    }
+                },
+                error: function () {
+                    $.loading.hide();
+                }
+            });
+        });
+    });
+</script>
+<script src="dist/js/bootbox.js"></script>
+<script type="text/javascript" src="js/head.js"></script>
+<script type="text/javascript" src="js/utils.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/common.js"></script>
+<script type="text/javascript" src="js/page/login.js"></script>
+</body>
+</html>
