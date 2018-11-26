@@ -10,12 +10,13 @@ eureka:
     lease-expiration-duration-in-seconds: 30
     lease-renewal-interval-in-seconds: 10
 logging:
-  config: classpath:log4j2-spring.xml
+  config:
+    classpath: log4j2-spring.xml
 spring:
   datasource:
-    url: jdbc:mysql://114.115.205.121:3306/it_cloud_dm?useUnicode=true&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
+    url: jdbc:mysql://localhost:3306/training?useUnicode=true&serverTimezone=UTC&characterEncoding=utf-8&useSSL=false&allowMultiQueries=true
     username: root
     password: root
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: com.mysql.cj.jdbc.Driver
       # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
